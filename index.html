@@ -245,7 +245,7 @@ transition: background-color 0.3s ease;
 <body>
 
     <div class="toast" id="toast"></div>
-
+<div class="container" id="input-container" style="display: none;"><input type="text" id="input-field"></div>
     <div class="container" id="ppo">
         <h2>Новий звіт ППO</h2>
         <div class="form-group">
@@ -380,23 +380,10 @@ transition: background-color 0.3s ease;
                             <option value="" disabled selected>Оберіть результат відпрацювання...</option>
                             <option value="Ціль обстріляно не знищено">Обстріляно не знищено</option>
                             <option value="Ціль обстріляно і ЗНИЩЕНО">Обстріляно і знищено</option>
-                            <option value="По цілі не працювали">По цілі не працювали</option>
-                            
-                        </select>
-                    </div>
-                <div id="active-item">
-                    <div class="form-group">
-                        <label for="is-destroyed-cause">По цілі не працювали:</label>
-                        <select id="is-destroyed-cause">
-                            <option value="" disabled selected>Оберіть причину не відпрацювання...</option>
-                            <option value="Велика відстань">Велика відстань.</option>
+                            <option value="Вогонь не відкривали далека відстань.">Вогонь не відкривали далека відстань.</option>
                             <option value="Відсутність візуального контакту">Відсутність візуального контакту.</option>
-                            <option value="Вогонь не відкривали далека відстань.">Вогонь не відкривали далека відстань.
-                            </option>
-                           
                         </select>
                     </div>
-                </div>      
             <div class="form-group" style="margin-bottom: 15px;" id="coordinate-place" >
                 <label for="coordinates">Координати:</label>
                 <div class="azimuth-row">
@@ -463,7 +450,6 @@ transition: background-color 0.3s ease;
                 <button id="btn-share-report" type="button">📤 Поділитись</button>
             </div>
         </div>
-        <!-- </div> -->
 
         <hr style="margin: 30px 0; border: 1px solid #ddd;">
 
@@ -529,12 +515,6 @@ transition: background-color 0.3s ease;
 
                     </div>
                     <div id="db-active-list"></div>
-
-
-                    <!-- <label for="new-active-db-input">Нова активність:</label> -->
-
-                    <!-- <button id="btn-edit-active" type="button">Редагувати активність</button>
-                    <button id="btn-delete-active" type="button">Видалити активність</button> -->
 
                 </div>
             </div>

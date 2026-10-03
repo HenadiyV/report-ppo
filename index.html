@@ -218,6 +218,149 @@
             }
         }
 
+        /* ===== Редактор довідників ===== */
+        button.dir-tab {
+            flex: 1;
+            padding: 8px;
+            cursor: pointer;
+            border: none;
+            background: #bdc3c7;
+            color: #333;
+            border-radius: 4px;
+        }
+
+        button.dir-tab.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .dir-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dir-row__actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        button.icon-btn {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        button.icon-btn--spaced {
+            margin-right: 5px;
+        }
+
+        .weapon-block {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .weapon-block__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .ammo-list {
+            margin: 5px 0;
+            padding-left: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .ammo-item {
+            margin-bottom: 3px;
+            display: flex;
+            justify-content: space-between;
+            max-width: 90%;
+        }
+
+        .ammo-action {
+            cursor: pointer;
+        }
+
+        .add-ammo-row {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .add-ammo-input {
+            flex: 1;
+            font-size: 11px;
+            padding: 3px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button.add-ammo-btn {
+            width: 50px;
+            font-size: 11px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* ===== Список застосованої зброї у звіті ===== */
+        .weapons-empty {
+            font-size: 13px;
+            color: #999;
+            padding: 6px 2px;
+        }
+
+        .weapon-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            background: #fff;
+        }
+
+        .weapon-entry__label {
+            font-size: 14px;
+        }
+
+        button.weapon-entry__remove {
+            width: auto;
+            padding: 4px 10px;
+            background: #e74c3c;
+            min-height: auto;
+        }
+
+        /* ===== Випадаючий список пошуку цілей ===== */
+        .target-option {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .target-option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .target-empty {
+            padding: 10px;
+            color: #777;
+        }
+
         .not-visible {
             display: none;
         }
@@ -264,7 +407,6 @@ transition: background-color 0.3s ease;
             </select>
         </div>
 
-        <!-- </div> -->
         <!-- Блок компаса и фиксации направлений -->
         <div id="compass-block">
             <!-- Компас вмикається автоматично при першому натисканні кнопки заміру азимуту (на iOS запитає дозвіл) -->
@@ -310,7 +452,7 @@ transition: background-color 0.3s ease;
                 style="background: #fcfcfc; padding: 15px; border: 1px solid #e0e0e0; border-radius: 6px;">
 
                 <div class="form-group">
-                    <label for="detection-select">Вияв:</label>
+                    <label for="detection-select">Виявлення:</label>
                     <select id="detection-select">
                         <option value="" disabled selected>Оберіть спосіб виявлення...</option>
                         <option value="Ціль виявлено візуально">Візуально</option>
@@ -380,7 +522,7 @@ transition: background-color 0.3s ease;
                             <option value="" disabled selected>Оберіть результат відпрацювання...</option>
                             <option value="Ціль обстріляно не знищено">Обстріляно не знищено</option>
                             <option value="Ціль обстріляно і ЗНИЩЕНО">Обстріляно і знищено</option>
-                            <option value="Вогонь не відкривали далека відстань.">Вогонь не відкривали далека відстань.</option>
+                            <option value="Вогонь не відкривали далека відстань">Вогонь не відкривали далека відстань.</option>
                             <option value="Відсутність візуального контакту">Відсутність візуального контакту.</option>
                         </select>
                     </div>
@@ -468,15 +610,9 @@ transition: background-color 0.3s ease;
 
                 <!-- Вкладки вибору довідника -->
                 <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <button id="tab-edit-targets"
-                        style="flex: 1; padding: 8px; cursor: pointer; border: none; background: #3498db; color: white; border-radius: 4px;">🎯
-                        Цілі</button>
-                    <button id="tab-edit-weapons"
-                        style="flex: 1; padding: 8px; cursor: pointer; border: none; background: #bdc3c7; color: #333; border-radius: 4px;">⚔️
-                        Зброя та БК</button>
-                    <button id="tab-edit-active"
-                        style="flex: 1; padding: 8px; cursor: pointer; border: none; background: #bdc3c7; color: #333; border-radius: 4px;">
-                        Активність</button>
+                    <button id="tab-edit-targets" type="button" class="dir-tab active">🎯 Цілі</button>
+                    <button id="tab-edit-weapons" type="button" class="dir-tab">⚔️ Зброя та БК</button>
+                    <button id="tab-edit-active" type="button" class="dir-tab">Активність</button>
                 </div>
 
                 <!-- Панель редагування цілей -->
@@ -519,7 +655,6 @@ transition: background-color 0.3s ease;
                 </div>
             </div>
         </div>
-        <!-- </div> -->
         </div>
         <!-- Подключаем главный JS как модуль -->
         <script type="module" src="dist/app.bundle.js"></script>

@@ -1,5 +1,5 @@
 // Меняем версию кэша, чтобы заставить браузер обновиться
-const CACHE_NAME = 'ppo-app-cache-0d5784827f';
+const CACHE_NAME = 'ppo-app-cache-a4f7c749da';
 
 const ASSETS = [
     './',
